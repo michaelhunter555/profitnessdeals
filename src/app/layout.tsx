@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { Content, PageContainer } from "@/components/Footer/FooterStyles";
 import MainNavigation from "@/components/Header/MainNavigation";
+import QueryClientWrapper from "@/components/Shared/QueryClient/QueryClientProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,12 +17,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <PageContainer>
-          <Content>
-            <MainNavigation />
-            {children}
-          </Content>
-        </PageContainer>
+        <QueryClientWrapper>
+          <PageContainer>
+            <Content>
+              <MainNavigation />
+              {children}
+            </Content>
+          </PageContainer>
+        </QueryClientWrapper>
       </body>
     </html>
   );
