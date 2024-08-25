@@ -50,3 +50,26 @@ export type SetFormAction = {
  */
 export type Action = InputChangeAction | SetFormAction;
 //endof formhook types
+
+/**
+ * @name UserProps
+ * @description - properties for login and signup
+ */
+export type UserProps = {
+  userName?: string;
+  email: string;
+  password: string;
+};
+
+/**
+ * @name UserObject
+ * @Description - properties of a user who has signed up
+ */
+
+export type UserObject = {
+  id: string;
+  userName: string;
+  email: string;
+  reviews: number[];
+  cred: number;
+};

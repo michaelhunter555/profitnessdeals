@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Content, PageContainer } from "@/components/Footer/FooterStyles";
 import MainNavigation from "@/components/Header/MainNavigation";
 import QueryClientWrapper from "@/components/Shared/QueryClient/QueryClientProvider";
+import AuthProvider from "@/context/auth-context";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,12 +19,14 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <QueryClientWrapper>
-          <PageContainer>
-            <Content>
-              <MainNavigation />
-              {children}
-            </Content>
-          </PageContainer>
+          <AuthProvider>
+            <PageContainer>
+              <Content>
+                <MainNavigation />
+                {children}
+              </Content>
+            </PageContainer>
+          </AuthProvider>
         </QueryClientWrapper>
       </body>
     </html>

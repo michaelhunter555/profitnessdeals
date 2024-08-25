@@ -4,8 +4,8 @@ import React from "react";
 interface MenuItemsProps {
   text: string;
   icon?: React.ReactNode;
-  component: string;
-  route: string;
+  component?: string;
+  route?: string;
 }
 
 export const MainMenuItems: MenuItemsProps[] = [
@@ -33,5 +33,15 @@ export const MainMenuItems: MenuItemsProps[] = [
     text: "Contact",
     component: "CONTACT",
     route: "/contact",
+  },
+  {
+    text: "Login",
+    component: "Login",
+    route: "/login",
+  },
+  {
+    text: "Logout",
+    component: "LOGOUT",
+    route: "/logout",
   },
 ];

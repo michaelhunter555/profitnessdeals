@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
@@ -10,6 +10,7 @@ import ListItemText from "@mui/material/ListItemText";
 import useTheme from "@mui/material/styles/useTheme";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
+import { AuthContext } from "../../context/auth-context";
 import StyledNextLink from "../Shared/Links/StyledNextLink";
 import { StyledBox, StyledContainer } from "./HeaderStyles";
 import { MainMenuItems } from "./menuItems";
@@ -25,8 +26,13 @@ type OpenMenuProps = {
 };
 
 const Header = () => {
+  const auth = useContext(AuthContext);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const handleLogout = () => {
+    auth.logout();
+  };
 
   return (
     <StyledContainer isMobile={isMobile}>
@@ -37,8 +43,17 @@ const Header = () => {
       )}
       <StyledBox>
         <List sx={{ display: "flex" }}>
-          {MainMenuItems.map((menu, i) => (
-            <StyledNextLink key={`${menu.component}--${i}`} route={menu.route}>
+          {MainMenuItems?.filter((menu) => {
+            if (auth.isLoggedIn) {
+              return menu.text !== "Login";
+            } else {
+              return menu.text !== "Logout";
+            }
+          }).map((menu, i) => (
+            <StyledNextLink
+              key={`${menu.component}--${i}`}
+              route={menu?.route || "#"}
+            >
               <ListItem>
                 <ListItemText
                   primary={menu.text}
