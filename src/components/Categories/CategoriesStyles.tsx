@@ -10,6 +10,7 @@ export const StyledGrid = styled(Grid)(({ theme }) => ({
   gridTemplateRows: "auto",
   gap: 2,
   [theme.breakpoints.down("sm")]: {
+    display: "flex",
     flexDirection: "column",
   },
 }));

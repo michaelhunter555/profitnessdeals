@@ -1,8 +1,6 @@
 "use client";
 import React from "react";
 
-import CardMedia from "@mui/material/CardMedia/CardMedia";
-import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
@@ -27,24 +25,15 @@ const CategoryCards = () => {
       {categoriesList.map((category, i) => (
         <Grid item key={`${category.category}--${i}`}>
           <Paper sx={{ padding: 2 }}>
-            <Stack>
-              <StyledNextLink route={category.link}>
-                <CardMedia
-                  component="img"
-                  src=""
-                  alt=""
-                  sx={{ width: "100%", height: "100%" }}
-                />
+            <StyledNextLink route={category.link}>
+              <Stack alignItems="center">
+                {category.icon}
 
                 <Typography color="text.secondary" variant="subtitle2">
                   {category.category}
                 </Typography>
-                <Divider />
-                <Typography color="text.secondary" variant="subtitle2">
-                  {category.description}
-                </Typography>
-              </StyledNextLink>
-            </Stack>
+              </Stack>
+            </StyledNextLink>
           </Paper>
         </Grid>
       ))}

@@ -4,6 +4,7 @@ import { Content, PageContainer } from "@/components/Footer/FooterStyles";
 import FeaturedItem from "@/components/PriceComparison/FeaturedItem";
 import HomeSearchField from "@/components/SearchField/HomeSearchField";
 import StyledText from "@/components/Shared/Text/StyledText";
+import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
           <FeaturedItem />
         </Stack>
       </Content>
+      <Divider sx={{ margin: "5rem auto", width: "100%" }} />
     </PageContainer>
   );
 }
